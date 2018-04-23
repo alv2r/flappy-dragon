@@ -5,12 +5,13 @@ using UnityEngine;
 public class DragonController : MonoBehaviour {
 
 	// Primitive variables
-	private bool isAlive;
 	public float upForce;
+	private bool isAlive;
 
 	// Unity variables
 	private Rigidbody2D rb2d;
 	private Animator anim;
+
 
 	// Is called when the script instance is being loaded. Used to initialize any 
 	// variables or game state before the game starts
@@ -42,5 +43,6 @@ public class DragonController : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D collision) {
 		isAlive = false;
 		anim.SetTrigger("Die");
+		GameController.instance.activateGameOverText();
 	}
 }
