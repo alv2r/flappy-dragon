@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
 	// This is a singleton, allows to call the class from any script
 	public static GameController instance;
 
-	public float scrollSpeed = 1.5f;
+	public float parallaxSpeed = 1;
 	public bool gameOverState;
 	public GameObject gameOverText;
+	public Text scoreText;
+
+	private int score;
 
 	private void Awake() {
 		// Manages multiples instance of the GameController when there are
@@ -30,10 +34,10 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	private void Update () {
-		if (gameOverState && Input.GetMouseButtonDown(0)) {
-			//SceneManager.LoadScene("Main");
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		}
+//		if (gameOverState && Input.GetMouseButtonDown(0)) {
+//			//SceneManager.LoadScene("Main");
+//			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+//		}
 	}
 
 	private void OnDestroy() {
@@ -42,8 +46,18 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void activateGameOverText() {
+	public void activateGameOverText () {
 		gameOverState = true;
 		gameOverText.SetActive(true);
+	}
+
+	public void incrementScore () {
+		if (gameOverState) return;
+		score++; 
+		scoreText.text = score.ToString();
+	}
+
+	public void restartGame () {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }

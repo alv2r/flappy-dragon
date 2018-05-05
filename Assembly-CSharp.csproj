@@ -51,9 +51,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ColumnController.cs" />
+     <Compile Include="Assets\Scripts\ColumnsPool.cs" />
      <Compile Include="Assets\Scripts\DragonController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
-     <Compile Include="Assets\Scripts\ScrollingController.cs" />
+     <Compile Include="Assets\Scripts\RepeatingController.cs" />
+     <Compile Include="Assets\Scripts\RotateDragon.cs" />
+     <Compile Include="Assets\Scripts\ScrollingObject.cs" />
      <None Include="Assets\Fonts\OFL.txt" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/alvaro/Desktop/Learn/My_Unity/Proyects/Flappy Dragon/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>

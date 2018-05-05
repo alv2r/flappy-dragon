@@ -12,12 +12,15 @@ public class DragonController : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	private Animator anim;
 
+	private RotateDragon rotateDragon;
+
 
 	// Is called when the script instance is being loaded. Used to initialize any 
 	// variables or game state before the game starts
 	private void Awake() {
 		rb2d = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
+		rotateDragon = GetComponent<RotateDragon>();
 		isAlive = true;
 		upForce = 200f;
 	}
@@ -43,6 +46,8 @@ public class DragonController : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D collision) {
 		isAlive = false;
 		anim.SetTrigger("Die");
+		rotateDragon.enabled = false;
 		GameController.instance.activateGameOverText();
+		rb2d.velocity = Vector2.zero;
 	}
 }
